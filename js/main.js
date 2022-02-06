@@ -4,6 +4,7 @@ const body = document.querySelector('body');
 
 const divButtonClear = document.createElement('div');
 const buttonClear = document.createElement('button');
+buttonClear.setAttribute('onclick','clearSquares()')
 buttonClear.textContent = 'Clear';
 
 
@@ -30,6 +31,8 @@ for (let i = 0; i < 16; i++) {
     container.appendChild(divColumn);
 }
 body.appendChild(buttonClear);
+
+
 body.appendChild(container);
 
 
@@ -43,8 +46,12 @@ squares.forEach((square) =>
         e.target.classList.add('square')
     ));
 
-const button = document.querySelector('button');
-button.addEventListener('click', () =>
-    squares.forEach((square) => square.classList.remove('square')
-    )
-);
+/*    Utilities     */
+
+function clearSquares() {
+    squares.forEach((square) => square.classList.remove('square'));
+}
+
+function newGrid(squaresPerSide){
+
+}
