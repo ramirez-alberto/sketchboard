@@ -4,7 +4,7 @@ const body = document.querySelector('body');
 
 const divButtonClear = document.createElement('div');
 const buttonClear = document.createElement('button');
-buttonClear.setAttribute('onclick', 'clearSquares()')
+buttonClear.setAttribute('onclick', 'clearAndGenerateGrid()')
 buttonClear.textContent = 'Clear';
 
 body.appendChild(buttonClear);
@@ -21,10 +21,6 @@ squares.forEach((square) =>
     ));
 
 /*    Utilities     */
-
-function clearSquares() {
-    squares.forEach((square) => square.classList.remove('square'));
-}
 
 function newGrid(squaresPerSide) {
     const body = document.querySelector('body');
@@ -52,5 +48,19 @@ function newGrid(squaresPerSide) {
 
     }
     body.appendChild(container);
+}
 
+function clearAndGenerateGrid(){
+    removeSquareClass();
+    const squaresPerSide = promptForSquares();
+    newGrid(squaresPerSide);
+}
+
+function removeSquareClass() {
+    squares.forEach((square) => square.classList.remove('square'));
+}
+
+function promptForSquares(){
+    const squaresPerSide = parseInt(prompt("How many squares per side?",""));
+    return squaresPerSide;
 }
