@@ -10,7 +10,7 @@ buttonClear.textContent = 'Clear';
 body.appendChild(buttonClear);
 newGrid(16);
 
-function addClassOnMouseOver(selector,className) {
+function addClassOnMouseOver(selector, className) {
     const nodes = document.querySelectorAll(`${selector}`);
 
     nodes.forEach((node) =>
@@ -19,6 +19,27 @@ function addClassOnMouseOver(selector,className) {
         ));
     return nodes;
 }
+
+function addRandomColorOnMouseOver(selector) {
+    const nodes = document.querySelectorAll(`${selector}`);
+
+    nodes.forEach((node) =>
+        node.addEventListener('mouseover', (e) => {
+            const elementBackgroundColor = e.target.style.backgroundColor;
+            const randomRGBA = `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},0.1)`;
+
+            if (elementBackgroundColor === "") e.target.style.backgroundColor = randomRGBA;
+            else {
+                const getAlpha = parseFloat(elementBackgroundColor.slice(elementBackgroundColor.length - 4, -1) * 10 + 1) / 10;
+                const newAlpha = elementBackgroundColor.slice(0, elementBackgroundColor.length - 4) + getAlpha.toString() + ")";
+                if (getAlpha < 1) e.target.style.backgroundColor = newAlpha;
+            }
+
+        }
+        ));
+
+}
+
 
 /*    Utilities     */
 
@@ -43,7 +64,8 @@ function newGrid(squaresPerSide) {
 
     }
     body.appendChild(container);
-    addClassOnMouseOver('.row','square');
+    // addClassOnMouseOver('.row','square');
+    addRandomColorOnMouseOver('.row');
 }
 
 function clearAndGenerateGrid() {
@@ -53,7 +75,7 @@ function clearAndGenerateGrid() {
 
     removeSquareClass(squares);
     body.removeChild(container);
-    if(squaresPerSide>100) squaresPerSide = 16;
+    if (squaresPerSide > 100) squaresPerSide = 16;
     newGrid(squaresPerSide);
 }
 
