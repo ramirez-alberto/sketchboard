@@ -16,15 +16,21 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    width: 960px;
+    height: 960px;
 }
 
+.column{
+    display: flex;
+    flex: 1;
+    height: 100%;
+    flex-direction: column;
+}
 
 .row{
     background-color: rgba(255, 255, 255, 0.753);
-    border: 3px solid rgb(109, 107, 107);
-    width: 30px;
-    height: 30px;
+    /* border: 1px solid rgb(109, 107, 107); */
+    flex: 1;
 }
 
 .square{

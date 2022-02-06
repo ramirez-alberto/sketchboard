@@ -10,9 +10,6 @@ buttonClear.textContent = 'Clear';
 body.appendChild(buttonClear);
 newGrid(16);
 
-
-/*    Add listeners    */
-
 function addClassOnMouseOver(selector,className) {
     const nodes = document.querySelectorAll(`${selector}`);
 
@@ -40,12 +37,6 @@ function newGrid(squaresPerSide) {
         for (let j = 0; j < squaresPerSide; j++) {
             const divRow = document.createElement('div');
             divRow.setAttribute('class', 'row');
-
-            if (i === 0) divRow.textContent = `${j}`;
-            if (j === 0) divRow.textContent = `${i}`;
-
-
-
             divColumn.appendChild(divRow);
         }
         container.appendChild(divColumn);
