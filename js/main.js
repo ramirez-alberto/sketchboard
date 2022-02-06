@@ -13,17 +13,21 @@ newGrid(16);
 
 /*    Add listeners    */
 
-const squares = document.querySelectorAll('.row');
+function addClassOnMouseOver(selector,className) {
+    const nodes = document.querySelectorAll(`${selector}`);
 
-squares.forEach((square) =>
-    square.addEventListener('mouseover', (e) =>
-        e.target.classList.add('square')
-    ));
+    nodes.forEach((node) =>
+        node.addEventListener('mouseover', (e) =>
+            e.target.classList.add(`${className}`)
+        ));
+    return nodes;
+}
 
 /*    Utilities     */
 
 function newGrid(squaresPerSide) {
     const body = document.querySelector('body');
+
     const container = document.createElement('div');
     container.setAttribute('id', 'container');
 
@@ -48,19 +52,24 @@ function newGrid(squaresPerSide) {
 
     }
     body.appendChild(container);
+    addClassOnMouseOver('.row','square');
 }
 
-function clearAndGenerateGrid(){
-    removeSquareClass();
+function clearAndGenerateGrid() {
     const squaresPerSide = promptForSquares();
+    const container = document.querySelector('#container');
+    const squares = document.querySelectorAll('.row');
+
+    removeSquareClass(squares);
+    body.removeChild(container);
     newGrid(squaresPerSide);
 }
 
-function removeSquareClass() {
-    squares.forEach((square) => square.classList.remove('square'));
+function removeSquareClass(nodes) {
+    nodes.forEach((node) => node.classList.remove('square'));
 }
 
-function promptForSquares(){
-    const squaresPerSide = parseInt(prompt("How many squares per side?",""));
+function promptForSquares() {
+    const squaresPerSide = parseInt(prompt("How many squares per side?", ""));
     return squaresPerSide;
 }
