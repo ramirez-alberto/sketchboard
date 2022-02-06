@@ -47,12 +47,13 @@ function newGrid(squaresPerSide) {
 }
 
 function clearAndGenerateGrid() {
-    const squaresPerSide = promptForSquares();
+    let squaresPerSide = promptForSquares();
     const container = document.querySelector('#container');
     const squares = document.querySelectorAll('.row');
 
     removeSquareClass(squares);
     body.removeChild(container);
+    if(squaresPerSide>100) squaresPerSide = 16;
     newGrid(squaresPerSide);
 }
 
@@ -61,6 +62,6 @@ function removeSquareClass(nodes) {
 }
 
 function promptForSquares() {
-    const squaresPerSide = parseInt(prompt("How many squares per side?", ""));
+    const squaresPerSide = parseInt(prompt("How many squares per side? Max: 100", "16"));
     return squaresPerSide;
 }
