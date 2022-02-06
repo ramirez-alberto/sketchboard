@@ -1,0 +1,31 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: cornsilk;
+    justify-content: center;
+    align-items: center;
+}
+
+#container{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.row{
+    background-color: rgba(255, 255, 255, 0.753);
+    border: 3px solid rgb(109, 107, 107);
+    width: 30px;
+    height: 30px;
+}
+
+.square{
+    background-color: rgb(109, 107, 107);
+}
